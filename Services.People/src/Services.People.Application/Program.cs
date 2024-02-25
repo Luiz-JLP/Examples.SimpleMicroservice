@@ -1,6 +1,10 @@
 
+using Microsoft.EntityFrameworkCore;
 using Services.People.Domains;
 using Services.People.Domains.Interfaces;
+using Services.People.Infrastructure;
+using Services.People.Infrastructure.Context;
+using Services.People.Infrastructure.Interfaces;
 
 namespace Services.People.Application
 {
@@ -10,8 +14,12 @@ namespace Services.People.Application
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            builder.Services.AddDbContext<AppDbContext>(options => options.UseInMemoryDatabase("People"));
+
             // Add services to the container.
-            builder.Services.AddSingleton<IPeopleDomain, PeopleDomain>();
+            builder.Services.AddScoped<IPeopleDomain, PeopleDomain>();
+
+            builder.Services.AddScoped<IPeopleContext, PeopleContext>();
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
