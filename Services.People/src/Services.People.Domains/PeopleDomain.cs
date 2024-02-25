@@ -10,11 +10,6 @@ namespace Services.People.Domains
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Person> Create(IEnumerable<Person> people)
-        {
-            throw new NotImplementedException();
-        }
-
         public bool Delete(Person person)
         {
             throw new NotImplementedException();

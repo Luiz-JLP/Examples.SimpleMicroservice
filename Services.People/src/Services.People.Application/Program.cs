@@ -1,4 +1,7 @@
 
+using Services.People.Domains;
+using Services.People.Domains.Interfaces;
+
 namespace Services.People.Application
 {
     public class Program
@@ -8,6 +11,7 @@ namespace Services.People.Application
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+            builder.Services.AddSingleton<IPeopleDomain, PeopleDomain>();
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

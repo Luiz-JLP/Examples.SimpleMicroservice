@@ -12,13 +12,6 @@ namespace Services.People.Domains.Interfaces
         Person Create(Person person);
 
         /// <summary>
-        /// Create Many People
-        /// </summary>
-        /// <param name="people"></param>
-        /// <returns></returns>
-        IEnumerable<Person> Create(IEnumerable<Person> people);
-
-        /// <summary>
         /// Read a Person by ID
         /// </summary>
         /// <param name="id"></param>
