@@ -5,6 +5,7 @@ using Services.People.Domains.Interfaces;
 using Services.People.Infrastructure;
 using Services.People.Infrastructure.Context;
 using Services.People.Infrastructure.Interfaces;
+using System.Text.Json.Serialization;
 
 namespace Services.People.Application
 {
@@ -21,7 +22,10 @@ namespace Services.People.Application
 
             builder.Services.AddScoped<IPeopleContext, PeopleContext>();
 
-            builder.Services.AddControllers();
+            builder.Services.AddControllers()
+                .AddJsonOptions(options =>
+                    options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
+
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
